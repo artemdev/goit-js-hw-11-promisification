@@ -7,11 +7,11 @@ const users = [
   
   const toggleUserState = (allUsers, userName) => {
       return new Promise(resolved => {
-        resolved(
-            allUsers.map(user => {
-                user.name === userName ? { ...user, active: !user.active } : user
-            })
-          );
+            const updatedUsers = allUsers.map(user =>
+                user.name === userName ? { ...user, active: !user.active } : user,
+              );
+            resolved(updatedUsers);
+
       })
   };
   
@@ -22,3 +22,5 @@ const users = [
    */
   toggleUserState(users, 'Mango').then(logger);
   toggleUserState(users, 'Lux').then(logger);
+
+  
